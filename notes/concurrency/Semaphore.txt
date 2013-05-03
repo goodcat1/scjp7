@@ -1,0 +1,52 @@
+java.util.concurrent.Semaphore
+
+A semaphore controls access to shared resources. 
+A semaphore maintains a counter to specify the number of
+resources that the semaphore controls. 
+Access to the resource is allowed if the counter is greater than zero,while a zero
+value of the counter indicates that no resource is available at the moment and so the access 
+is denied.
+
+The methods acquire() and release() are for acquiring and releasing resources 
+from a semaphore. 
+If a thread
+calls acquire() and the counter is zero (i.e., resources are unavailable), 
+the thread waits until the counter is non-zero
+and then gets the resource for use. 
+Once the thread is done using the resource, it calls release() to increment the
+resource availability counter.
+
+Method Description
+
+Semaphore(int permits) Constructor to create Semaphore objects with a given number of permits
+(the number of threads that can access the resource at a time). If the
+permit’s value is negative, the given number of release() calls must
+happen before acquire() calls can succeed.
+
+Semaphore(int permits, boolean fair)
+Same as the previous constructor, but this extra fair option indicates that
+the permits should be allotted on a first-come-first-served basis.
+
+void acquire()
+void acquire(int permits)
+Acquires a permit if available; otherwise, it blocks until a permit becomes
+available. Can throw an InterruptedException if some other thread
+interrupts it while waiting to acquire a permit. The overloaded version
+takes a number of permits as an argument.
+
+void acquireUninterruptibly()
+Same as the acquire() method, but this thread cannot be interrupted
+while waiting to acquire a permit.
+
+boolean tryAcquire()
+boolean tryAcquire(long timeout, TimeUnit unit)
+Acquires a permit from the semaphore if available at the time of the call
+and returns true; if unavailable, it returns false immediately (without
+blocking). The overloaded tryAcquire() method additionally takes a
+time-out argument—the thread blocks to acquire a permit from the
+semaphore until a given time-out period.
+
+void release()
+void release(int permits)
+Releases a permit from the semaphore. The overloaded version specifies
+the number of permits to release.

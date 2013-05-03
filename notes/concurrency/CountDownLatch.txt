@@ -1,0 +1,52 @@
+java.util.concurrent.CountDownLatch
+
+This synchronizer allows one or more threads to wait for a countdown to complete. 
+This countdown could be for a set
+of events to happen or until a set of operations being performed in other threads completes.
+
+Method Description
+
+CountDownLatch(int count) Creates an instance of CountDownLatch with the number of times the
+countDown() method must be called before the threads waiting with await()
+can continue execution.
+
+void await() If the current count in CountDownLatch object is zero, it immediately returns;
+otherwise, the thread blocks until the countdown reaches zero. Can throw an
+InterruptedException.
+
+boolean await(long timeout, TimeUnit unit)
+Same as the previous method, await(), but takes an additional time-out
+argument. If the thread returns successfully after the count reaches zero, this
+method returns true; if the thread returns because of time-out, it returns false.
+
+void countDown() Reduces the number of counts by one in this CountDownLatch object. If the
+count reaches zero, all the (a)waiting threads are released. If the current count
+is already zero, nothing happens.
+
+long getCount() Returns the pending counts in this CountDownLatch object.
+
+
+How CountDownLatch works in Java
+Now we know What is CountDownLatch in Java, its time to find out 
+How CountDownLatch works in Java. 
+CountDownLatch works in latch principle,  main thread will wait until Gate is open. 
+One thread waits for n number of threads specified while creating CountDownLatch in Java. 
+Any thread, usually main thread of application,  
+which calls CountDownLatch.await() will wait until count reaches zero or its 
+interrupted by another Thread. All other thread are required to do count down by calling 
+CountDownLatch.countDown() once they are completed or ready to the job. as soon as count 
+reaches zero, Thread awaiting starts running. One of the disadvantage of CountDownLatch 
+is that its not reusable once count reaches to zero you can not use CountDownLatch any more, 
+but don't worry Java concurrency API has another concurrent utility called CyclicBarrier 
+for such requirements.
+
+
+CountDownLatch in Java – Things to remember
+Few points about Java CountDownLatch which is worth remembering:
+
+1) You can not reuse CountDownLatch once count is reaches to zero, 
+this is the main difference between CountDownLatch and CyclicBarrier, 
+which is frequently asked in core Java interviews and multi-threading  interviews.
+
+2) Main Thread wait on Latch by calling CountDownLatch.await() method while other thread 
+calls CountDownLatch.countDown() to inform that they have completed.

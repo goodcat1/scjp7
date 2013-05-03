@@ -1,0 +1,10 @@
+java.util.concurrent.Exchanger
+
+The Exchanger class is meant for exchanging data between two threads. 
+What Exchanger does is something very
+simple: it waits until both the threads have called the exchange() method. 
+When both threads have called the
+exchange() method, the Exchanger object actually exchanges the data shared by the 
+threads with each other. This
+class is useful when two threads need to synchronize 
+between them and continuously exchange data.
