@@ -1,10 +1,23 @@
 Deferred Binding
-	Deferred binding is a feature of the GWT compiler that works by generating many versions of code at compile time, only one of which needs to be loaded by a particular client during bootstrapping at runtime. Each version is generated on a per browser basis, along with any other axis that your application defines or uses. For example, if you were to internationalize your application using GWT's Internationalization module, the GWT compiler would generate various versions of your application per browser environment, such as "Firefox in English", "Firefox in French", "Internet Explorer in English", etc... As a result, the deployed JavaScript code is compact and quicker to download than hand coded JavaScript, containing only the code and resources it needs for a particular browser environment.
+	Deferred binding is a feature of the GWT compiler that works by 
+	generating many versions of code at compile time, only one of 
+	which needs to be loaded by a particular client during 
+	bootstrapping at runtime. Each version is generated on a per 
+	browser basis, along with any other axis that your application 
+	defines or uses. For example, if you were to internationalize 
+	your application using GWT's Internationalization module, the 
+	GWT compiler would generate various versions of your application 
+	per browser environment, such as "Firefox in English", "Firefox in French", 
+	"Internet Explorer in English", etc... As a result, the deployed JavaScript 
+	code is compact and quicker to download than hand coded JavaScript, 
+	containing only the code and resources it needs for a particular browser environment.
 	
 	Deferred Binding Benefits
 		Reduces the size of the generated JavaScript code
 		Saves development time by automatically generating code
-		No run-time penalty to look up an implementation in a data structure as with dynamic binding or using virtual functions.
+		No run-time penalty to look up an implementation in a data structure 
+		as with dynamic binding or using virtual functions.
 		
 	Deferred Binding using Generators
-		Generators are classes that are invoked by the GWT compiler to generate a Java implementation of a class during compilation.
+		Generators are classes that are invoked by the GWT compiler 
+		to generate a Java implementation of a class during compilation.
