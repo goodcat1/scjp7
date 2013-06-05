@@ -3,7 +3,7 @@ Abstract Classes and Interfaces
 
 <table>
 <tr>
-    <td>*Iterable*</td>  
+    <td><em>Iterable</em></td>  
     <td>A class implementing this interface can be used for iterating with a for each statement.</td>
 </tr>
 <tr>
