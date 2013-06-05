@@ -51,3 +51,17 @@ class implements the ListIterator interface.
     </td>
 </tr>
 </table>
+
+<pre>
+Iterable
+    |
+Collection
+    |
+_______________________
+|       |             |
+List    Set           Queue
+        |             |
+        SortedSet     Deque
+        |
+        NavigableSet
+</pre>
