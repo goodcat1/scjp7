@@ -34,3 +34,27 @@ During this phase, the JSF handles any application-level events, such as submitt
 During this phase, the JSF asks container/application server to render the page if the application is using JSP pages. For initial request, the components represented on the page will be added to the component tree as the JSP container executes the page. If this is not an initial request, the component tree is already built so components need not to be added again. In either case, the components will render themselves as the JSP container/Application server traverses the tags in the page.
 
 After the content of the view is rendered, the response state is saved so that subsequent requests can access it and it is available to the restore view phase.
+
+# JSF - Managed Beans
+
+    1. Managed Bean is a regular Java Bean class registered with JSF. In other words, Managed Beans is a java bean managed by JSF framework.
+    2. The managed bean contains the getter and setter methods, business logic or even a backing bean (a bean contains all the HTML form value).
+    3. Managed beans works as Model for UI component.
+    4. Managed Bean can be accessed from JSF page.
+    5. In JSF 1.2,a managed bean had to register it in JSF configuration file such as faces-config.xml.
+    6. From JSF 2.0 onwards, Managed beans can be easily registered using annotations. This approach keeps beans and there registration at one place and it becomes easier to manage.
+
+```
+@ManagedBean(name = "helloWorld", eager = true)
+@RequestScoped
+public class HelloWorld {
+	
+   @ManagedProperty(value="#{message}")
+   private Message message;
+   ...
+}
+```
+
+## @ManagedBean Annotation
+	@ManagedBean marks a bean to be a managed bean with the name specified in *name* attribute. If the *name* attribute is not specified, then the managed bean name will default to class name portion of the fully qualified class name. In our case it would be helloWorld.
+	Another important attribute is *eager*. If eager="true" then managed bean is created before it is requested for the first time otherwise "lazy" initialization is used in which bean will be created only when it is requested.
